@@ -1,0 +1,27 @@
+<div class="card">
+    <h4 class="card-header">Login</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && username?.errors }" />
+                <div *ngIf="submitted && username?.errors" class="invalid-feedback">
+                    <div>Username is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && password?.errors }" />
+                <div *ngIf="submitted && password?.errors" class="invalid-feedback">
+                    <div>Password is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary mt-2">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
